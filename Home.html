@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Tanaka Benson Munjanja | DevOps Engineer | Cloud Specialist</title>
+    <meta name="description" content="DevOps Support Engineer & Systems Engineer specializing in Azure, Microsoft 365, cloud infrastructure, and security compliance. Based in Johannesburg, South Africa.">
+    <meta name="keywords" content="DevOps Engineer, Systems Engineer, Azure, Microsoft 365, Cloud Computing, South Africa, Johannesburg, Tanaka Munjanja, IT Support, Cloud Security">
+    <meta name="author" content="Tanaka Benson Munjanja">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Tanaka Benson Munjanja | DevOps Engineer">
+    <meta property="og:description" content="DevOps Support Engineer & Systems Engineer specializing in cloud infrastructure and security compliance.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Tanaka Benson Munjanja",
+      "jobTitle": "DevOps Support Engineer / Systems Engineer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Johannesburg",
+        "addressCountry": "South Africa"
+      },
+      "email": "bensonmunjanja@gmail.com",
+      "telephone": "+27-61-953-8407",
+      "url": "",
+      "sameAs": [
+        "https://www.linkedin.com/in/tanaka-munjanja-a724001a1/",
+        "https://github.com/Benson117"
+      ],
+      "knowsAbout": ["Azure", "Microsoft 365", "Cloud Computing", "DevOps", "Security Compliance", "System Administration"]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        #loading-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        /* Scroll to Top Button */
+        #scrollToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            transform: translateY(20px);
+        }
+        
+        #scrollToTop.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        #scrollToTop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+        }
+        
+        /* Base Styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #1abc9c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            background: rgba(44, 62, 80, 0.95);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .logo-icon {
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #16a085;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Section Styling */
+        .section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            font-size: 1.8rem;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-category {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+            transition: transform 0.3s;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-list {
+            list-style-type: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .skill-list li:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .skill-name {
+            font-weight: 500;
+        }
+        
+        .skill-level {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 500;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.1rem;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+        
+        .timeline-date {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-role {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+            font-size: 1.2rem;
+        }
+        
+        .timeline-company {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+        
+        /* Certifications Grid */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .cert-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s;
+            border-top: 4px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cert-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        
+        .cert-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-badge {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        /* Education Cards */
+        .edu-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .edu-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--secondary);
+            transition: transform 0.3s;
+        }
+        
+        .edu-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+            min-width: 250px;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            background: var(--gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        /* Hobbies Section */
+        .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .hobby-item {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            border-top: 4px solid var(--accent);
+            transition: transform 0.3s;
+        }
+        
+        .hobby-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hobby-icon {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        /* Quick Links Cards */
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .quick-link-card {
+            flex: 1;
+            min-width: 200px;
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-top: 4px solid var(--secondary);
+            transition: transform 0.3s;
+        }
+        
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            background: white;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-text {
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(44, 62, 80, 0.98);
+                display: none;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(10px);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.8rem 0;
+            }
+            
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            #scrollToTop {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .skills-grid, .certs-grid, .edu-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .quick-links {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            #scrollToTop {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <div class="loading-text">Loading Portfolio...</div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-code logo-icon"></i>
+                TBM<span>.</span>
+            </a>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+                    <li><a href="#" data-page="skills" class="nav-link">Skills</a></li>
+                    <li><a href="#" data-page="experience" class="nav-link">Experience</a></li>
+                    <li><a href="#" data-page="certifications" class="nav-link">Certifications</a></li>
+                    <li><a href="#" data-page="education" class="nav-link">Education</a></li>
+                    <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="profile-container">
+                        <!-- Replace with your actual photo -->
+                        <img src="https://media.licdn.com/dms/image/v2/D4D22AQESH0lAp7LTzg/feedshare-shrink_1280/B4DZn7uAHPGsAs-/0/1760864768425?e=1771459200&v=beta&t=aUTXTo0fnOK_dBh-fbKR8xMm1_rX07p4KqhJ7LgbRAM" 
+                             alt="Tanaka Benson Munjanja - DevOps Engineer" class="profile-image">
+                        <div class="profile-text">
+                            <h1>Tanaka Benson Munjanja</h1>
+                            <h2>DevOps Support Engineer / Systems Engineer</h2>
+                            <p>Expert in endpoint management, cloud computing, and incident management to ensure reliable system performance. Skilled in Microsoft 365, Azure, and Dynamics 365 CRM configuration and support, driving operational efficiency and security compliance.</p>
+                            <div style="margin-top: 2rem;">
+                                <a href="#" data-page="contact" class="btn btn-primary nav-link">Contact Me</a>
+                                <a href="#" data-page="experience" class="btn btn-secondary nav-link">View Experience</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <p>DevOps Support Engineer & Systems Engineer with expertise in endpoint management, cloud computing, and incident management to ensure reliable system performance. Skilled in Microsoft 365, Azure, and Dynamics 365 CRM configuration and support, driving operational efficiency and security compliance. Focused on leveraging technical and leadership skills to enhance infrastructure resilience and support scalable growth.</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Quick Links</h2>
+                <div class="quick-links">
+                    <div class="quick-link-card">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">
+                            <i class="fas fa-code" style="color: var(--secondary); margin-right: 0.5rem;"></i> 
+                            Technical Skills
+                        </h3>
+                        <p>Explore my technical expertise in cloud computing, administration, security compliance, and more.</p>
+                        <a href="#" data-page="skills" class="nav-link" style="color: var(--secondary); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 1rem;">
+                            View Skills <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="quick-link-card">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">
+                            <i class="fas fa-briefcase" style="color: var(--secondary); margin-right: 0.5rem;"></i> 
+                            Work Experience
+                        </h3>
+                        <p>Review my professional journey with companies like Blugrass Digital, Sompisi IT Solutions, and more.</p>
+                        <a href="#" data-page="experience" class="nav-link" style="color: var(--secondary); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 1rem;">
+                            View Experience <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="quick-link-card">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">
+                            <i class="fas fa-certificate" style="color: var(--secondary); margin-right: 0.5rem;"></i> 
+                            Certifications
+                        </h3>
+                        <p>Browse my professional certifications from Microsoft, Google, CompTIA, and other institutions.</p>
+                        <a href="#" data-page="certifications" class="nav-link" style="color: var(--secondary); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 1rem;">
+                            View Certifications <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Page -->
+        <section id="skills" class="page">
+            <div class="section">
+                <h2 class="section-title">Technical & Professional Skills</h2>
+                <div class="skills-grid">
+                    <!-- Professional Skills -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-users"></i> Professional Skills</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Leadership</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Communication</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Teamwork</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Problem-solving</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Time Management</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Adaptability</span><span class="skill-level">Expert</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Cloud Computing -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cloud"></i> Cloud Computing</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Microsoft Azure</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Microsoft 365</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Amazon Web Services (AWS)</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Google Cloud Platform (GCP)</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Azure App Services</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Azure Front Door</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Azure CDN</span><span class="skill-level">Expert</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Security & Compliance -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-shield-alt"></i> Security & Compliance</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Security Compliance</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Incident Management</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Email Security (SPF, DKIM, DMARC)</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Microsoft Entra ID (Azure AD)</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Multi-Factor Authentication (MFA)</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Role-Based Access Control (RBAC)</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Tenant Assessment</span><span class="skill-level">Expert</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Administration & Management -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Administration & Management</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">System Administration</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Microsoft 365 Administration</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Exchange Online</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">SharePoint Administration</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Microsoft Teams Administration</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">OneDrive Administration</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Endpoint Management (Intune)</span><span class="skill-level">Expert</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Infrastructure & Networking -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-server"></i> Infrastructure & Networking</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Azure Virtual Networks (VNets)</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Network Security Groups (NSGs)</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Firewall Configuration</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Network Configuration</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">DNS Management</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">DHCP Configuration</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">TCP/IP Networking</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">VPN Configuration</span><span class="skill-level">Expert</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- DevOps & Automation -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code-branch"></i> DevOps & Automation</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">CI/CD Pipelines (Azure DevOps)</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">GitHub Actions</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Infrastructure as Code (IaC)</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Docker Containerization</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Kubernetes Orchestration</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Terraform</span><span class="skill-level">Advanced</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Programming & Development -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming & Development</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">C#</span><span class="skill-level">Intermediate</span></li>
+                            <li><span class="skill-name">Java</span><span class="skill-level">Intermediate</span></li>
+                            <li><span class="skill-name">Python</span><span class="skill-level">Intermediate</span></li>
+                            <li><span class="skill-name">JavaScript</span><span class="skill-level">Intermediate</span></li>
+                            <li><span class="skill-name">HTML/CSS</span><span class="skill-level">Intermediate</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Virtualization & Infrastructure -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-desktop"></i> Virtualization & Infrastructure</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Computer Virtualization (Cloud)</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Computer Virtualization (On-premises)</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Infrastructure Monitoring</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Windows Server 2016+</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Hardware Configuration</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Software Configuration</span><span class="skill-level">Expert</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Web & Domain Management -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-globe"></i> Web & Domain Management</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Web Hosting Management</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Domain Management</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">cPanel/WHM Administration</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">SSL Certificate Configuration</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">WordPress Administration</span><span class="skill-level">Advanced</span></li>
+                            <li><span class="skill-name">Joomla Administration</span><span class="skill-level">Advanced</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Ticketing & Support Systems -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-headset"></i> Ticketing & Support Systems</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Dynamics 365 CRM</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">ConnectWise</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Jira</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Customer Support</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Phone Support</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Email Support</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Remote Support Tools (AnyDesk, TeamViewer)</span><span class="skill-level">Expert</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- RMM & Endpoint Tools -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-desktop"></i> RMM & Endpoint Tools</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Microsoft Intune</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">ConnectWise RMM</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Security Admin Tools</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Other RMM Software</span><span class="skill-level">Expert</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Backup & Recovery -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-database"></i> Backup & Recovery</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Microsoft Azure Backup</span><span class="skill-level">Beginner</span></li>
+                            <li><span class="skill-name">Microsoft 365 Backup</span><span class="skill-level">Beginner</span></li>
+                            <li><span class="skill-name">Veeam Backup</span><span class="skill-level">Beginner</span></li>
+                            <li><span class="skill-name">Disaster Recovery Planning</span><span class="skill-level">Advanced</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Active Directory & Identity -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-user-shield"></i> Active Directory & Identity</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Active Directory Domain Services (AD DS)</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Group Policy Management</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">User Access Control</span><span class="skill-level">Expert</span></li>
+                            <li><span class="skill-name">Security Groups Management</span><span class="skill-level">Expert</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Skill Categories Summary</h2>
+                <div class="skills-grid">
+                    <div class="skill-category" style="border-left-color: #3498db;">
+                        <h3><i class="fas fa-chart-pie"></i> Skill Distribution</h3>
+                        <div style="margin-top: 1rem;">
+                            <div style="margin-bottom: 0.8rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                    <span>Expert Level Skills</span>
+                                    <span>65%</span>
+                                </div>
+                                <div style="height: 8px; background: #ecf0f1; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 65%; height: 100%; background: linear-gradient(90deg, #1abc9c, #16a085);"></div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 0.8rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                    <span>Advanced Level Skills</span>
+                                    <span>25%</span>
+                                </div>
+                                <div style="height: 8px; background: #ecf0f1; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 25%; height: 100%; background: linear-gradient(90deg, #3498db, #2980b9);"></div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 0.8rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                    <span>Intermediate Level Skills</span>
+                                    <span>8%</span>
+                                </div>
+                                <div style="height: 8px; background: #ecf0f1; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 8%; height: 100%; background: linear-gradient(90deg, #9b59b6, #8e44ad);"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                    <span>Beginner Level Skills</span>
+                                    <span>2%</span>
+                                </div>
+                                <div style="height: 8px; background: #ecf0f1; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: 2%; height: 100%; background: linear-gradient(90deg, #e74c3c, #c0392b);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category" style="border-left-color: #1abc9c;">
+                        <h3><i class="fas fa-star"></i> Core Competencies</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Cloud Infrastructure Management</span><span class="skill-level">Primary</span></li>
+                            <li><span class="skill-name">Security & Compliance</span><span class="skill-level">Primary</span></li>
+                            <li><span class="skill-name">DevOps & Automation</span><span class="skill-level">Primary</span></li>
+                            <li><span class="skill-name">System Administration</span><span class="skill-level">Primary</span></li>
+                            <li><span class="skill-name">Technical Leadership</span><span class="skill-level">Secondary</span></li>
+                            <li><span class="skill-name">Programming & Development</span><span class="skill-level">Secondary</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category" style="border-left-color: #9b59b6;">
+                        <h3><i class="fas fa-certificate"></i> Certified Expertise</h3>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">Microsoft Certified (Azure, 365, Security)</span><span class="skill-level">Multiple</span></li>
+                            <li><span class="skill-name">CompTIA (A+, Network+, ITF+)</span><span class="skill-level">Multiple</span></li>
+                            <li><span class="skill-name">Google Cloud & Marketing</span><span class="skill-level">Certified</span></li>
+                            <li><span class="skill-name">AWS Certified</span><span class="skill-level">Certified</span></li>
+                            <li><span class="skill-name">cPanel Certified</span><span class="skill-level">Professional</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Page -->
+        <section id="experience" class="page">
+            <div class="section">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Jul 2025 — Present</div>
+                        <div class="timeline-role">DevOps Support Engineer</div>
+                        <div class="timeline-company">Blugrass Digital | UK, Cape Town, Johannesburg</div>
+                        <ul>
+                            <li>Managed Azure infrastructure including App Services, Front Door, CDN, VNets, and firewalls to ensure high availability and performance</li>
+                            <li>Strengthened security posture by implementing Entra ID (Azure AD), MFA, RBAC, and Endpoint Manager policies across cloud environments</li>
+                            <li>Built and maintained CI/CD pipelines using Azure DevOps for automated deployment and continuous integration</li>
+                            <li>Deployed and managed containerized applications with Docker & Kubernetes for scalable microservices architecture</li>
+                            <li>Applied Infrastructure as Code (IaC) principles using Terraform for consistent and reproducible cloud deployments</li>
+                            <li>Provided Tier 2-3 cloud support across Microsoft 365, Azure, and Teams telephony infrastructure</li>
+                            <li>Implemented comprehensive backup, disaster recovery, and SQL retention policies to ensure business continuity</li>
+                            <li>Documented Standard Operating Procedures (SOPs), managed licensing, and coordinated with vendors for optimal service delivery</li>
+                            <li>Performed proactive cloud monitoring and incident response to prevent outages and maintain SLA compliance</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Jul 2024 — Jun 2025</div>
+                        <div class="timeline-role">IT Manager / Head of IT Support</div>
+                        <div class="timeline-company">Sompisi IT Solutions | Cape Town, South Africa</div>
+                        <ul>
+                            <li>Delivered advanced technical support across Microsoft 365, Azure, domain management, and networking infrastructure</li>
+                            <li>Improved organizational security posture through MFA enforcement, Intune compliance policies, and VPN configuration</li>
+                            <li>Managed SharePoint sites with granular permissions, automated workflows, and document management systems</li>
+                            <li>Reported KPIs and service metrics directly to executive leadership, providing insights for strategic decision-making</li>
+                            <li>Oversaw IT operations including troubleshooting, infrastructure governance, and system maintenance</li>
+                            <li>Led IT projects including cloud migrations, system upgrades, and security policy rollout across departments</li>
+                            <li>Coordinated cross-departmental IT initiatives to align technology with business goals, improving operational efficiency</li>
+                            <li>Managed vendor relationships and service level agreements to ensure optimal service delivery</li>
+                            <li>Implemented ITIL-based service management practices for incident, problem, and change management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Aug 2023 — Jun 2024</div>
+                        <div class="timeline-role">ICT Systems Engineer</div>
+                        <div class="timeline-company">Global Micro Solutions | Rosebank, Johannesburg</div>
+                        <ul>
+                            <li>Performed comprehensive email setups, migrations, DNS configuration, and domain transfers for enterprise clients</li>
+                            <li>Managed Active Directory Domain Services (AD DS), Microsoft 365 licensing, and user access control systems</li>
+                            <li>Provided remote technical support, resolving complex issues within established SLA targets</li>
+                            <li>Set up and configured web hosting environments (WordPress, Joomla) with SSL certificates for secure communications</li>
+                            <li>Administered Microsoft 365 environments including Exchange Online, SharePoint, and Teams configurations</li>
+                            <li>Implemented network security measures including firewall configurations and intrusion detection systems</li>
+                            <li>Conducted regular system audits and vulnerability assessments to maintain security compliance</li>
+                            <li>Provided training and documentation for end-users and IT staff on system usage and best practices</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Jul 2022 — Jul 2023</div>
+                        <div class="timeline-role">IT Technician</div>
+                        <div class="timeline-company">Matrix Warehouse | Fourways, Johannesburg</div>
+                        <ul>
+                            <li>Provided comprehensive hardware and software support for desktops, laptops, routers, and Windows systems</li>
+                            <li>Managed Active Directory Domain Services including security groups, user access policies, and group policy objects</li>
+                            <li>Installed, configured, and troubleshot Microsoft 365 applications, Kaspersky security suites, and business applications</li>
+                            <li>Performed network testing, troubleshooting, and resolved connectivity issues for home and office environments</li>
+                            <li>Conducted hardware diagnostics, repairs, and preventive maintenance on computing equipment</li>
+                            <li>Assisted with IT asset management, inventory tracking, and procurement processes</li>
+                            <li>Provided customer-facing technical support with strong emphasis on client satisfaction and service delivery</li>
+                            <li>Documented technical procedures and created knowledge base articles for common technical issues</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Afrika Tikkun Apprenticeship -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">Jan 2022 — Jun 2022</div>
+                        <div class="timeline-role">Cyber Security Learnership (Apprenticeship)</div>
+                        <div class="timeline-company">Afrika Tikkun & City of Johannesburg | Johannesburg</div>
+                        <ul>
+                            <li>Monitored network traffic to identify potential security threats, improving threat detection accuracy and enhancing overall system safety</li>
+                            <li>Configured and maintained security tools to ensure compliance with organizational policies and regulatory requirements</li>
+                            <li>Conducted vulnerability assessments to detect system weaknesses, supporting proactive risk mitigation and strengthening data protection</li>
+                            <li>Collaborated with IT teams to implement security patches, minimizing exposure to cyber attacks and improving infrastructure reliability</li>
+                            <li>Documented security incidents and response actions to maintain clear records that support audit readiness and incident analysis</li>
+                            <li>Assisted in developing security policies and procedures for network protection and data confidentiality</li>
+                            <li>Participated in security awareness training programs for staff to promote cybersecurity best practices</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Walsoft Computers Internship -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021 — 2022</div>
+                        <div class="timeline-role">ICT Technician (Internship)</div>
+                        <div class="timeline-company">Walsoft Computers | Johannesburg</div>
+                        <ul>
+                            <li>Installed and configured PCs, printers, networks, and office equipment for small to medium business clients</li>
+                            <li>Troubleshooted hardware, software, and connectivity issues, achieving 95% first-contact resolution rate</li>
+                            <li>Managed backups, antivirus software implementations, and routine system maintenance schedules</li>
+                            <li>Assisted with LAN/WAN setups, wireless deployments, and network infrastructure optimization</li>
+                            <li>Configured user accounts, permissions, and access controls for small business client environments</li>
+                            <li>Provided technical support and training to end-users on system operations and software usage</li>
+                            <li>Participated in IT projects including system upgrades, network expansions, and hardware refresh cycles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Key Projects & Achievements</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cloud-upload-alt"></i> Cloud Migration Projects</h3>
+                        <ul class="skill-list">
+                            <li>Successfully migrated on-premises infrastructure to Azure cloud environment</li>
+                            <li>Implemented hybrid cloud solutions with seamless connectivity</li>
+                            <li>Reduced infrastructure costs by 30% through cloud optimization</li>
+                            <li>Achieved 99.9% uptime for critical business applications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-shield-alt"></i> Security Implementations</h3>
+                        <ul class="skill-list">
+                            <li>Implemented zero-trust security model across all cloud environments</li>
+                            <li>Reduced security incidents by 75% through proactive monitoring</li>
+                            <li>Achieved compliance with industry security standards</li>
+                            <li>Successfully passed multiple security audits with zero critical findings</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-chart-line"></i> Performance Optimization</h3>
+                        <ul class="skill-list">
+                            <li>Improved application performance by 40% through CI/CD optimization</li>
+                            <li>Reduced deployment times from hours to minutes</li>
+                            <li>Implemented auto-scaling solutions for variable workloads</li>
+                            <li>Optimized cloud resource utilization achieving 25% cost savings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Page -->
+        <section id="certifications" class="page">
+            <div class="section">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certs-grid">
+                    <!-- Certifications populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Page -->
+        <section id="education" class="page">
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="edu-cards">
+                    <div class="edu-card">
+                        <h3>Bachelor of Science Honours in Computing</h3>
+                        <p><strong>University of South Africa</strong></p>
+                        <p>Pretoria, South Africa</p>
+                        <p><em>Feb 2023 - May 2025</em></p>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <h3>Bachelor of Science in Information Technology</h3>
+                        <p><strong>Richfield Graduate Institute of Technology</strong></p>
+                        <p>Johannesburg, South Africa</p>
+                        <p><em>Feb 2018 - Aug 2021</em></p>
+                    </div>
+                    
+                    <div class="edu-card">
+                        <h3>Matric (Bachelor Pass)</h3>
+                        <p><strong>Northview High School</strong></p>
+                        <p>Johannesburg, South Africa</p>
+                        <p><em>Jan 2013 - Dec 2017</em></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Languages</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>English</h3>
+                        <p><strong>Level:</strong> C1 - Advanced</p>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>IsiZulu</h3>
+                        <p><strong>Level:</strong> B2 - Upper intermediate</p>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Shona</h3>
+                        <p><strong>Level:</strong> Native</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Hobbies & Interests</h2>
+                <div class="hobbies">
+                    <div class="hobby-item">
+                        <div class="hobby-icon"><i class="fas fa-gamepad"></i></div>
+                        <h3>Gaming</h3>
+                        <p>Enjoy strategic and immersive gaming experiences</p>
+                    </div>
+                    
+                    <div class="hobby-item">
+                        <div class="hobby-icon"><i class="fas fa-desktop"></i></div>
+                        <h3>PC Building</h3>
+                        <p>Building custom computers and optimizing hardware</p>
+                    </div>
+                    
+                    <div class="hobby-item">
+                        <div class="hobby-icon"><i class="fas fa-fish"></i></div>
+                        <h3>Fishing</h3>
+                        <p>Relaxing outdoor activity for stress relief</p>
+                    </div>
+                    
+                    <div class="hobby-item">
+                        <div class="hobby-icon"><i class="fas fa-film"></i></div>
+                        <h3>Movies</h3>
+                        <p>Watching films across various genres</p>
+                    </div>
+                    
+                    <div class="hobby-item">
+                        <div class="hobby-icon"><i class="fas fa-running"></i></div>
+                        <h3>Sports</h3>
+                        <p>Following various sports events and activities</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <div class="section">
+                <h2 class="section-title">Contact Information</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Johannesburg, South Africa</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+27 61 953 8407</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>bensonmunjanja@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <h3 class="section-title" style="border-bottom: none; margin-bottom: 1rem;">Connect with me</h3>
+                    <p>Feel free to reach out for professional opportunities, collaboration, or to discuss technology trends.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>Tanaka Benson Munjanja</h3>
+            <p>DevOps Support Engineer / Systems Engineer</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/tanaka-munjanja-a724001a1/" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Benson117" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                <a href="mailto:bensonmunjanja@gmail.com" aria-label="Send Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="copyright">© <span id="currentYear"></span> Tanaka Benson Munjanja. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            setTimeout(() => {
+                loadingScreen.classList.add('fade-out');
+            }, 1000);
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu toggle for mobile
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Page navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the target page ID
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // Hide all pages
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // Show target page
+                    document.getElementById(targetPage).classList.add('active');
+                    
+                    // Update active nav link
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                    }
+                    
+                    // Scroll to top of page
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Populate certifications with your requested additions
+            const certifications = [
+                { 
+                    name: "Google Marketing Fundamentals", 
+                    issuer: "Google", 
+                    date: "Dec 2021",
+                    badge: "Google"
+                },
+                { 
+                    name: "Microsoft Azure Data Fundamentals [DP-900]", 
+                    issuer: "Microsoft", 
+                    date: "Sep 2021",
+                    badge: "Microsoft"
+                },
+                { 
+                    name: "Microsoft Azure Fundamentals [AZ-900]", 
+                    issuer: "Microsoft", 
+                    date: "Dec 2021",
+                    badge: "Microsoft"
+                },
+                { 
+                    name: "Microsoft AI Fundamentals [AI-900]", 
+                    issuer: "Microsoft", 
+                    date: "Sep 2021",
+                    badge: "Microsoft"
+                },
+                { 
+                    name: "Security, Compliance, and Identity Fundamentals [SC-900]", 
+                    issuer: "Microsoft", 
+                    date: "Jan 2022",
+                    badge: "Microsoft"
+                },
+                { 
+                    name: "OPSWAT Introduction to Critical Infrastructure Protection & Cyber Security", 
+                    issuer: "OPSWAT", 
+                    date: "Nov 2025",
+                    badge: "Security"
+                },
+                { 
+                    name: "CompTIA IT Fundamentals [FCO-U61] - ITF+", 
+                    issuer: "CompTIA", 
+                    date: "Jan 2020",
+                    badge: "CompTIA"
+                },
+                { 
+                    name: "CompTIA A+ [220-1101 & 220-1102]", 
+                    issuer: "CompTIA", 
+                    date: "Jan 2021",
+                    badge: "CompTIA"
+                },
+                { 
+                    name: "CompTIA Network+ [N10-008] - N+", 
+                    issuer: "CompTIA", 
+                    date: "Feb 2021",
+                    badge: "CompTIA"
+                },
+                { 
+                    name: "cPanel Professional Certification Exam (CPP)", 
+                    issuer: "cPanel", 
+                    date: "Dec 2024",
+                    badge: "cPanel"
+                },
+                { 
+                    name: "cPanel Imunify360 Certification Exam", 
+                    issuer: "cPanel", 
+                    date: "Dec 2024",
+                    badge: "cPanel"
+                },
+                { 
+                    name: "AWS re/Start Graduate", 
+                    issuer: "AWS", 
+                    date: "Jun 2018",
+                    badge: "AWS"
+                },
+                { 
+                    name: "Microsoft Applied Skills: Get started with Azure management tasks", 
+                    issuer: "Microsoft", 
+                    date: "Nov 2025",
+                    badge: "Microsoft"
+                },
+                { 
+                    name: "Microsoft Applied Skills: Secure storage for Azure Files and Azure Blob Storage", 
+                    issuer: "Microsoft", 
+                    date: "Nov 2025",
+                    badge: "Microsoft"
+                },
+                { 
+                    name: "Microsoft Applied Skills: Get started with identities and access using Microsoft Entra", 
+                    issuer: "Microsoft", 
+                    date: "Oct 2025",
+                    badge: "Microsoft"
+                },
+                // NEWLY ADDED CERTIFICATIONS
+                { 
+                    name: "Microsoft Applied Skills: Accelerate app development by using GitHub Copilot", 
+                    issuer: "Microsoft", 
+                    date: "Recent",
+                    badge: "Microsoft"
+                },
+                { 
+                    name: "Microsoft Applied Skills: Automate Azure Load Testing by using GitHub Actions", 
+                    issuer: "Microsoft", 
+                    date: "Recent",
+                    badge: "Microsoft"
+                }
+            ];
+            
+            const certsGrid = document.querySelector('.certs-grid');
+            certifications.forEach(cert => {
+                const certCard = document.createElement('div');
+                certCard.className = 'cert-card';
+                certCard.innerHTML = `
+                    <h3>${cert.name}</h3>
+                    <p><strong>Issuer:</strong> ${cert.issuer}</p>
+                    <p><strong>Date:</strong> ${cert.date}</p>
+                    <span class="cert-badge">${cert.badge}</span>
+                `;
+                certsGrid.appendChild(certCard);
+            });
+            
+            // Close menu when clicking outside on mobile
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!e.target.closest('nav') && !e.target.closest('.menu-toggle')) {
+                        mainNav.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all sections for animation
+            document.querySelectorAll('.section, .hero').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s, transform 0.5s';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
